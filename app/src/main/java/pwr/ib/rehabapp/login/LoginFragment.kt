@@ -73,7 +73,7 @@ class LoginFragment : BaseFragment() {
                     .addOnFailureListener { exc ->
                         Snackbar.make(
                             requireView(),
-                            "Upss...Something went wrong...",
+                            "Wrong login or password",
                             Snackbar.LENGTH_SHORT
                         )
                             .show()

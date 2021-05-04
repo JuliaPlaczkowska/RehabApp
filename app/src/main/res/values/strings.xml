@@ -7,56 +7,29 @@
     <string name="sign_up_hint_email">E-mail</string>
     <string name="sign_up_hint_password">Password</string>
     <string name="sign_up_hint_password_v2">Repeat password</string>
-    <string name="sign_up_button">ZAREJESTRUJ</string>
-    <string name="sign_up_header">ZAREJESTRUJ SIĘ</string>
+    <string name="sign_up_button">Sign up</string>
+    <string name="sign_up_header">Sign up</string>
 
 
-    <string name="tv_sign_in">ZALOGUJ SIĘ</string>
+    <string name="tv_sign_in">Sign in</string>
     <string name="sign_in_email_hint">E-mail</string>
-    <string name="sign_in_password_hint">Hasło</string>
-    <string name="sign_in_button">ZALOGUJ</string>
-    <string name="sign_in_register_button">ZAREJESTRUJ</string>
+    <string name="sign_in_password_hint">Password</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="sign_in_register_button">Sign up</string>
 
 
-    <string name="main_page_tv_name">Imie</string>
-    <string name="main_page_ed_name">Twoje imie</string>
-    <string name="main_page_tv_surname">Nazwisko</string>
-    <string name="main_page_ed_surname">Twoje nazwisko</string>
+    <string name="main_page_tv_name">Name</string>
+    <string name="main_page_ed_name">Your name</string>
+    <string name="main_page_tv_surname">Last name</string>
+    <string name="main_page_ed_surname">Your last name</string>
     <string name="main_page_tv_email">E-mail</string>
-    <string name="main_page_ed_email">Twoj E-mail</string>
+    <string name="main_page_ed_email">Your E-mail</string>
 
 
-    <string name="foo">RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView
-    RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView
-    RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView
-    RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView
-    RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView</string>
-
-    <!-- ********************************
-            LIST ROW STRINGS
-    ******************************** -->
-
-    <string name="row_name">Nazwa samochodu</string>
-    <string name="row_year">Rocznik samochodu</string>
     <string name="title_activity_registration">RegistrationActivity</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="title_activity_main_patient">MainPatientActivity</string>
     <string name="title_activity_login">LoginActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_login_fragment">LoginFragment</string>
-    <string name="title_activity_registration_fragment">RegistrationFragment</string>
 
 </resources>

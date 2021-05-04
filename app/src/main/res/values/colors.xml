@@ -10,4 +10,6 @@
     <color name="button_light">#83C5BE</color>
     <color name="button_dark">#006D77</color>
     <color name="background">#EDF6F9</color>
+    <color name="warm1">#ffddd2</color>
+    <color name="warm2">#e29578</color>
 </resources>

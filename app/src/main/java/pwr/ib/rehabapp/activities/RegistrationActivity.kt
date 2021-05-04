@@ -22,9 +22,7 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun isCurrentUser() {
         fbAuth.currentUser?.let {auth ->
-            val intent = Intent(applicationContext, MainActivity::class.java).apply {
-                flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            }
+            val intent = Intent(applicationContext, MainPatientActivity::class.java)
             startActivity(intent)
         }
     }

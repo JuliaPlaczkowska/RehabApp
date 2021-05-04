@@ -18,10 +18,7 @@ abstract class BaseFragment: Fragment() {
     }
 
     protected fun startApp(){
-        val intent = Intent(requireContext(), MainPatientActivity::class.java).apply {
-            //dwie flagi - po klinieciu wstecz nas nie wyrzuci do ekranu logowania tylko aplikacja sie wylaczy
-            flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        }
+        val intent = Intent(requireContext(), MainPatientActivity::class.java)
         startActivity(intent)
     }
 

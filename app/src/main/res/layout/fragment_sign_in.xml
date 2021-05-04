@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center_horizontal"
-            android:text="Sing in"
+            android:text="@string/sign_in_button"
             android:textColor="@color/button_dark"
             android:textSize="24dp" />
 
