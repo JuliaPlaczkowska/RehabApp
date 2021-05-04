@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "959566504684",
+    "project_id": "rehabapp-13915",
+    "storage_bucket": "rehabapp-13915.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959566504684:android:7ba8da81703f6ad1bd3bc9",
+        "android_client_info": {
+          "package_name": "pwr.ib.rehabapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959566504684-qr0275k4iqeb3opsfvij78k1qr73dpsi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8kyF3pcYTvZLcEnSJcmEAymUVnt0BRQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "959566504684-qr0275k4iqeb3opsfvij78k1qr73dpsi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
