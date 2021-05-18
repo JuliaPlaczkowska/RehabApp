@@ -31,5 +31,22 @@
     <string name="title_activity_main_patient">MainPatientActivity</string>
     <string name="title_activity_login">LoginActivity</string>
 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+    <string name="foo">RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView
+    RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView
+    RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView
+    RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView
+    RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView</string>
+
+    <!-- ********************************
+            LIST ROW STRINGS
+    ******************************** -->
+
+    <string name="row_name">Exercise set</string>
+    <string name="row_year">description</string>
+
 
 </resources>

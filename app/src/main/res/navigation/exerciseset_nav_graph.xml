@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/exerciseset_nav_graph"
+    app:startDestination="@id/exerciseSetsPatientFragment">
+
+    <fragment
+        android:id="@+id/exerciseSetsPatientFragment"
+        android:name="pwr.ib.rehabapp.profile.patient.ExerciseSetsPatientFragment"
+        android:label="ExerciseSetsPatientFragment" />
+    <fragment
+        android:id="@+id/profilePatientFragment2"
+        android:name="pwr.ib.rehabapp.profile.patient.ProfilePatientFragment"
+        android:label="profile_patient_fragment"
+        tools:layout="@layout/profile_patient_fragment" >
+        <action
+            android:id="@+id/action_profilePatientFragment2_to_exerciseSetsPatientFragment"
+            app:destination="@id/exerciseSetsPatientFragment" />
+    </fragment>
+</navigation>

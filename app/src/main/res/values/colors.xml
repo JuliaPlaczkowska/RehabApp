@@ -12,4 +12,10 @@
     <color name="background">#EDF6F9</color>
     <color name="warm1">#ffddd2</color>
     <color name="warm2">#e29578</color>
+
+    <color name="material_medium">#42a5f5</color>
+    <color name="material_dark">#0077c2</color>
+    <color name="material_light">#80d6ff</color>
+    <color name="light_black">#0E0E0E</color>
+    <color name="main_page_color">#EDEDED</color>
 </resources>

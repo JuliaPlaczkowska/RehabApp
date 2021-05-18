@@ -1,14 +1,13 @@
 package pwr.ib.rehabapp.activities
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_main_patient.*
-import kotlinx.android.synthetic.main.fragment_sign_in.*
-import kotlinx.android.synthetic.main.fragment_sign_in.loginButton
 import pwr.ib.rehabapp.R
 
 class MainPatientActivity :  AppCompatActivity() {
@@ -19,18 +18,22 @@ class MainPatientActivity :  AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_patient)
-        setupLogOutClick()
+
+   //     setupLogOutClick()
+
+        val navView: BottomNavigationView = findViewById(R.id.bottomNavView)
+
+        val navController = findNavController(R.id.mainNavHost)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.homePatientFragment, R.id.profilePatientFragment))
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+
 
     }
 
 
-    private fun setupLogOutClick() {
-        buttonLogOut.setOnClickListener {
-            fbAuth.signOut()
-            val intent = Intent(this,MainActivity::class.java)
-            startActivity(intent)
 
-        }
 
-    }
 }
