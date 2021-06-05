@@ -13,10 +13,17 @@
         <action
             android:id="@+id/action_homePatientFragment_to_profilePatientFragment"
             app:destination="@id/profilePatientFragment" />
+        <action
+            android:id="@+id/action_homePatientFragment_to_exerciseListFragment2"
+            app:destination="@id/exerciseListFragment2" />
     </fragment>
     <fragment
         android:id="@+id/profilePatientFragment"
         android:name="pwr.ib.rehabapp.profile.patient.ProfilePatientFragment"
         android:label="profile_patient_fragment"
         tools:layout="@layout/profile_patient_fragment" />
+    <fragment
+        android:id="@+id/exerciseListFragment2"
+        android:name="pwr.ib.rehabapp.home.patient.ExerciseListFragment"
+        android:label="ExerciseListFragment" />
 </navigation>

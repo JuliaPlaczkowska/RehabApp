@@ -8,4 +8,7 @@ data class User(
     val weight: Float? = null,
     val exercise_set: List<String>? = null,
     val injuries: List<String>? = null
+
+
 )
+

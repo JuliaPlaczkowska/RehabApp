@@ -19,15 +19,14 @@ class MainPatientActivity :  AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_patient)
 
-   //     setupLogOutClick()
-
         val navView: BottomNavigationView = findViewById(R.id.bottomNavView)
 
         val navController = findNavController(R.id.mainNavHost)
         val appBarConfiguration = AppBarConfiguration(
             setOf(R.id.homePatientFragment, R.id.profilePatientFragment))
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        //setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(navController)
         navView.setupWithNavController(navController)
 
 

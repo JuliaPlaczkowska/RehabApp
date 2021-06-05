@@ -1,23 +1,23 @@
-package pwr.ib.rehabapp.profile.patient
+package pwr.ib.rehabapp.home.patient
 
+import android.app.Activity
 import android.os.Bundle
-import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.loader.app.LoaderManager
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.home_patient_fragment.*
 import pwr.ib.rehabapp.R
 import pwr.ib.rehabapp.data.ExerciseSet
-import pwr.ib.rehabapp.home.patient.ExerciseSetAdapter
-import pwr.ib.rehabapp.home.patient.HomePatientViewModel
-import pwr.ib.rehabapp.home.patient.OnExerciseSetItemLongClick
 
-class ExerciseSetsPatientFragment: Fragment(), OnExerciseSetItemLongClick {
+class ExerciseListFragment : Fragment(), OnExerciseSetItemLongClick {
 
     private val auth = FirebaseAuth.getInstance()
     private val homeVm by viewModels<HomePatientViewModel>()
@@ -28,7 +28,7 @@ class ExerciseSetsPatientFragment: Fragment(), OnExerciseSetItemLongClick {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.home_patient_fragment, container, false)
+        return inflater.inflate(R.layout.exercise_list_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,4 +47,6 @@ class ExerciseSetsPatientFragment: Fragment(), OnExerciseSetItemLongClick {
     override fun onExerciseSetLongClick(exerciseSet: ExerciseSet, position: Int) {
         homeVm.addExerciseSet(exerciseSet)
     }
+
+
 }

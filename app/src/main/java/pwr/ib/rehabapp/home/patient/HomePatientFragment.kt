@@ -1,26 +1,27 @@
 package pwr.ib.rehabapp.home.patient
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.loader.app.LoaderManager
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.api.Distribution
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.home_patient_fragment.*
-import pwr.ib.rehabapp.BaseFragment
 import pwr.ib.rehabapp.R
 import pwr.ib.rehabapp.data.ExerciseSet
 
-class HomePatientFragment :  Fragment(), OnExerciseSetItemLongClick {
+class HomePatientFragment : Fragment(), OnExerciseSetItemLongClick {
 
     private val auth = FirebaseAuth.getInstance()
     private val homeVm by viewModels<HomePatientViewModel>()
-private val adapter = ExerciseSetAdapter(this)
+    private val adapter = ExerciseSetAdapter(this)
 
 
     override fun onCreateView(
@@ -45,6 +46,8 @@ private val adapter = ExerciseSetAdapter(this)
 
     override fun onExerciseSetLongClick(exerciseSet: ExerciseSet, position: Int) {
         homeVm.addExerciseSet(exerciseSet)
+        findNavController().navigate(R.id.action_homePatientFragment_to_exerciseListFragment2)
+
     }
 
 

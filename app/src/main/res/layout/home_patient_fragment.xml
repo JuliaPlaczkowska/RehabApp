@@ -9,7 +9,16 @@
         android:id="@+id/recyclerView_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        tools:listitem="@layout/list_row" />
+        android:layout_marginTop="250px"
+        tools:listitem="@layout/list_row_sets" />
+
+    <ImageButton
+        android:id="@+id/add_new_set"
+        android:layout_width="76dp"
+        android:layout_height="300px"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="300px"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_add" />
 
 </FrameLayout>

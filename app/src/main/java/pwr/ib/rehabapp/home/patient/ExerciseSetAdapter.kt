@@ -14,6 +14,7 @@ class ExerciseSetAdapter(private val listener: OnExerciseSetItemLongClick) :
 
     private val exerciseSetList = ArrayList<ExerciseSet>()
 
+
     fun setExerciseSets(list: List<ExerciseSet>) {
         exerciseSetList.clear()
         exerciseSetList.addAll(list)
@@ -23,7 +24,7 @@ class ExerciseSetAdapter(private val listener: OnExerciseSetItemLongClick) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseSetViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.list_row, parent, false)
+        val view = inflater.inflate(R.layout.list_row_sets, parent, false)
         return ExerciseSetViewHolder(view)
     }
 
@@ -59,4 +60,8 @@ class ExerciseSetAdapter(private val listener: OnExerciseSetItemLongClick) :
 interface OnExerciseSetItemLongClick {
     fun onExerciseSetLongClick(exerciseSet: ExerciseSet, position: Int)
 
+}
+
+public interface SendDataInterface{
+    fun sendData(id : String);
 }

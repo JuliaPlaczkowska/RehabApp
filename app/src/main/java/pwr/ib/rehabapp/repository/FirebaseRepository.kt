@@ -38,6 +38,11 @@ class FirebaseRepository {
         return cloudResult
     }
 
+    fun getUserId(): String {
+
+        return auth.currentUser?.uid.toString()
+    }
+
     fun getExerciseSetData(): LiveData<List<ExerciseSet>> {
         val cloudResult = MutableLiveData<List<ExerciseSet>>()
 
@@ -54,22 +59,6 @@ class FirebaseRepository {
         return cloudResult
     }
 
-    fun getUsersExerciseSets(list: List<String>?): LiveData<List<ExerciseSet>> {
-        val cloudResult = MutableLiveData<List<ExerciseSet>>()
-        if (!list.isNullOrEmpty())
-            cloud.collection("exercise_set")
-                .whereIn("sid", list)
-                .get()
-                .addOnSuccessListener {
-                    val resultList = it.toObjects(ExerciseSet::class.java)
-                    cloudResult.postValue(resultList)
-                }
-                .addOnFailureListener {
-                    Log.d(REPO_DEBUG, it.message.toString())
-                }
-
-        return cloudResult
-    }
 
     fun addExerciseSet(exerciseSet: ExerciseSet) {
         cloud.collection("user")

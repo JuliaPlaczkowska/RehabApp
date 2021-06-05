@@ -9,6 +9,6 @@ class ProfilePatientViewModel : ViewModel() {
 
     val user = repository.getUserData()
     val usersExerciseSet = user.switchMap {
-        repository.getUsersExerciseSets(it.exercise_set)
+        repository.getExerciseSetData()
     }
 }

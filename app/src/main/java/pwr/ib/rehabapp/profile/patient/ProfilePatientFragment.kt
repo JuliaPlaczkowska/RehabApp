@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.profile_patient_fragment.*
@@ -40,6 +42,7 @@ class ProfilePatientFragment : BaseFragment() {
         profileVm.user.observe(viewLifecycleOwner) { user ->
             bindUserData(user)
             setupLogOutClick()
+            setupStartExerciseClick()
         }
     }
 
@@ -63,8 +66,9 @@ class ProfilePatientFragment : BaseFragment() {
     }
 
     private fun setupStartExerciseClick() {
-        buttonStartExercise.setOnClickListener {
-
+        buttonStartExercise.setOnClickListener { view ->
+           //TODO
+        // view.findNavController().navigate(R.id.viewTransactionsAction)
         }
     }
 }
