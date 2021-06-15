@@ -1,13 +1,12 @@
-package pwr.ib.rehabapp.home.patient
+package pwr.ib.rehabapp.profile.patient
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.list_row_add_exercise.view.*
 import pwr.ib.rehabapp.R
 import pwr.ib.rehabapp.data.Exercise
@@ -19,7 +18,7 @@ class ExercisesToAddAdapter (private val listener: OnExerciseItemLongClick) :
     RecyclerView.Adapter<ExercisesToAddAdapter.ExercisesToAddViewHolder>(){
 
     private val exercisesList = ArrayList<Exercise>()
-    private val exerciseSelected = ArrayList<Exercise>()
+    val exerciseSelected = ArrayList<String>()
 
 
     fun setExercises(list: List<Exercise>) {
@@ -42,11 +41,15 @@ class ExercisesToAddAdapter (private val listener: OnExerciseItemLongClick) :
         val name = holder.itemView.findViewById<TextView>(R.id.exerciseName)
         val injurylevel = holder.itemView.findViewById<TextView>(R.id.exerciseInjuryLevel)
         val reps = holder.itemView.findViewById<TextView>(R.id.exerciseReps)
-        val image = holder.itemView.findViewById<ImageView>(R.id.exerciseImage)
-
+       
         name.text = exercisesList[holder.adapterPosition].name
         reps.text = exercisesList[holder.adapterPosition].reps
+        injurylevel.text = "injury level ${exercisesList[holder.adapterPosition].injury_level}"
 
+        val image = holder.itemView.findViewById<ImageView>(R.id.exerciseImage)
+        Glide.with(holder.itemView)
+            .load(exercisesList[holder.adapterPosition].image)
+            .into(image)
     }
 
     override fun getItemCount(): Int {
@@ -57,18 +60,24 @@ class ExercisesToAddAdapter (private val listener: OnExerciseItemLongClick) :
         init {
             view.setOnLongClickListener {
 
-                val checkBox : CheckBox = this.itemView.findViewById<CheckBox>(R.id.cb)
-
-                if(exerciseSelected.contains(exercisesList[adapterPosition])) {
-                    exerciseSelected.remove(exercisesList[adapterPosition])
-                    checkBox.isChecked = false
+                if(exerciseSelected.contains(exercisesList[adapterPosition].eid)) {
+                    exerciseSelected.remove(exercisesList[adapterPosition].eid.toString())
+//                    val added : ImageView = this.itemView.findViewById<ImageView>(R.id.imageAdded)
+//                    added.visibility = View.INVISIBLE
+                    Snackbar.make(
+                        view,
+                        "${exercisesList[adapterPosition].name} removed",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                 }
                 else {
-                    exerciseSelected.add(exercisesList[adapterPosition])
-                    checkBox.isChecked = true
+                    exerciseSelected.add(exercisesList[adapterPosition].eid.toString())
+                    Snackbar.make(
+                        view,
+                        "${exercisesList[adapterPosition].name} added",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                 }
-
-
                 listener.onExerciseLongClick(exercisesList[adapterPosition], adapterPosition)
                 true
             }

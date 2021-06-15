@@ -12,19 +12,21 @@ import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.profile_patient_fragment.*
 import pwr.ib.rehabapp.BaseFragment
 import pwr.ib.rehabapp.R
 import pwr.ib.rehabapp.data.User
+import pwr.ib.rehabapp.home.patient.SetFinishedFragmentDirections
 
 class ProfilePatientFragment : BaseFragment() {
 
     private val PROFILE_DEBUG = "PROFILE_DEBUG"
-    private val REQUEST_IMAGE_CAPTURE = 1
     private val fbAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     private val profileVm by viewModels<ProfilePatientViewModel>()
+    var user : User = User()
 
     override fun onCreateView(
 
@@ -39,22 +41,32 @@ class ProfilePatientFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        profileVm.user.observe(viewLifecycleOwner) { user ->
+        profileVm.user().observe(viewLifecycleOwner) { u ->
+            user = u
             bindUserData(user)
             setupLogOutClick()
-            setupStartExerciseClick()
         }
+        setupSubmitClick()
+        buttonProgress.setOnClickListener{ showProgress() }
+        buttonAddExerciseSet.setOnClickListener{ addExerciseSet() }
+        buttonCreateExerciseSet.setOnClickListener{ createExeciseSet()}
+    }
+
+    private fun createExeciseSet() {
+        val action = ProfilePatientFragmentDirections.actionProfilePatientFragmentToCreateExerciseSetFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun addExerciseSet() {
+        val action = ProfilePatientFragmentDirections.actionProfilePatientFragmentToAddExerciseSetFragment()
+        findNavController().navigate(action)
     }
 
     private fun bindUserData(user: User) {
         Log.d(PROFILE_DEBUG, user.toString())
         userSurnameET.setText(user.surname)
-        userHeightET.text = user.height.toString()
-        userWeightET.text = user.weight.toString()
-//        Glide.with(this)
-//            .load(user.image)
-//            .circleCrop()
-//            .into(userImage)
+        userHeightET.hint = user.height.toString()
+        userWeightET.hint = user.weight.toString()
     }
 
     private fun setupLogOutClick() {
@@ -65,10 +77,30 @@ class ProfilePatientFragment : BaseFragment() {
         }
     }
 
-    private fun setupStartExerciseClick() {
-        buttonStartExercise.setOnClickListener { view ->
-           //TODO
-        // view.findNavController().navigate(R.id.viewTransactionsAction)
+    private fun setupSubmitClick() {
+        submitDataProfile.setOnClickListener {
+            if(!userSurnameET.text.isNullOrEmpty())
+            user.surname = userSurnameET.text.toString()
+
+            if(!userHeightET.text.isNullOrEmpty())
+                user.height = userHeightET.text.toString().toFloat()
+
+            if(!userWeightET.text.isNullOrEmpty())
+                user.weight = userWeightET.text.toString().toFloat()
+
+            profileVm.updateUserDetails(user)
+            Snackbar.make(
+                it,
+                "Your details are up to date",
+                Snackbar.LENGTH_SHORT
+            ).show()
         }
+    }
+
+    private fun showProgress(){
+        val action = ProfilePatientFragmentDirections
+            .actionProfilePatientFragmentToProgressFragment()
+
+        findNavController().navigate(action)
     }
 }

@@ -1,6 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:textAlignment="center"
+            android:textSize="24dp" />
+
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            tools:srcCompat="@tools:sample/avatars"/>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textSkipped">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <TextView
+            android:id="@+id/textDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:text="description"
+            android:textSize="18dp" />
+        </LinearLayout>
+        </ScrollView>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <TextView
+            android:id="@+id/textDuration"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:textSize="18dp"
+            android:text="duration"
+            android:textAlignment="center"/>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            >
+
+            <ImageButton
+                android:id="@+id/buttonBad"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_thumb_down"/>
+
+
+
+            <androidx.legacy.widget.Space
+                android:layout_width="50dp"
+                android:layout_height="match_parent"/>
+
+            <ImageButton
+                android:id="@+id/buttonGood"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_thumb_up" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            >
+
+            <Button
+                android:id="@+id/buttonSkip"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="SKIP" />
+
+
+            <androidx.legacy.widget.Space
+                android:layout_width="50dp"
+                android:layout_height="match_parent"/>
+
+            <Button
+                android:id="@+id/buttonNext"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="NEXT >" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

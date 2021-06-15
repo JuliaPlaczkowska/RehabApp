@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
-<!--            app:enterAnim="@anim/fui_slide_in_right"-->
-<!--        app:exitAnim="@anim/fragment_fade_exit"-->
+            app:destination="@id/registrationFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fragment_fade_exit" />
 
     </fragment>
     <fragment

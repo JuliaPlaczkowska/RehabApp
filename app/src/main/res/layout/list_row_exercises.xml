@@ -17,7 +17,7 @@
 
 
         <ImageView
-            android:id="@+id/exerciseSetImage"
+            android:id="@+id/exerciseImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -27,22 +27,24 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/exerciseSetName"
+            android:id="@+id/exerciseName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="44dp"
-            android:text="@string/row_name"
+            android:maxWidth="210dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="exercise name"
             android:textColor="@color/light_black"
             android:textSize="@dimen/tv_profile_page_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/exerciseSetinjuryLevel"
+            app:layout_constraintBottom_toTopOf="@+id/exerciseInjuryLevel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.189"
-            app:layout_constraintStart_toEndOf="@+id/exerciseSetImage"
+            app:layout_constraintStart_toEndOf="@+id/exerciseImage"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.93" />
 
         <TextView
-            android:id="@+id/exerciseSetinjuryLevel"
+            android:id="@+id/exerciseInjuryLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
@@ -53,7 +55,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.126"
-            app:layout_constraintStart_toEndOf="@+id/exerciseSetImage" />
+            app:layout_constraintStart_toEndOf="@+id/exerciseImage" />
 
         <TextView
             android:id="@+id/exerciseReps"
@@ -67,20 +69,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.126"
-            app:layout_constraintStart_toEndOf="@+id/exerciseSetImage" />
+            app:layout_constraintStart_toEndOf="@+id/exerciseImage" />
 
-        <ImageButton
-            android:id="@+id/add_new_set"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom|right"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_delete"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.724"
-            app:layout_constraintStart_toEndOf="@+id/exerciseSetName"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/deleteExercise"-->
+<!--            android:layout_width="60dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_gravity="bottom|end"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:src="@drawable/ic_delete"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.724"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/exerciseName"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

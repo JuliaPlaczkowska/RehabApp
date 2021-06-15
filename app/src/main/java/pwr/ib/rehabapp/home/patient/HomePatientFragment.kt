@@ -1,15 +1,13 @@
 package pwr.ib.rehabapp.home.patient
 
-import android.app.Activity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
-import androidx.loader.app.LoaderManager
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
@@ -19,10 +17,10 @@ import pwr.ib.rehabapp.data.ExerciseSet
 
 class HomePatientFragment : Fragment(), OnExerciseSetItemLongClick {
 
-    private val auth = FirebaseAuth.getInstance()
-    private val homeVm by viewModels<HomePatientViewModel>()
+    private var auth = FirebaseAuth.getInstance()
     private val adapter = ExerciseSetAdapter(this)
-
+    private val homeVm: HomePatientViewModel by activityViewModels()
+    private val HOME_DEBUG = "HOME_DEBUG"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,18 +33,38 @@ class HomePatientFragment : Fragment(), OnExerciseSetItemLongClick {
         super.onViewCreated(view, savedInstanceState)
         recyclerView_home.layoutManager = LinearLayoutManager(requireContext())
         recyclerView_home.adapter = adapter
+        bindData()
+        imageRefresh.setOnClickListener{ bindData() }
+        buttonAddNewSet.setOnClickListener{ addNewSets() }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        homeVm.exerciseSet.observe(viewLifecycleOwner) { list ->
-            adapter.setExerciseSets(list)
-        }
+
     }
 
     override fun onExerciseSetLongClick(exerciseSet: ExerciseSet, position: Int) {
-        homeVm.addExerciseSet(exerciseSet)
-        findNavController().navigate(R.id.action_homePatientFragment_to_exerciseListFragment2)
+        //homeVm.addExerciseSet(exerciseSet)
+        val action = HomePatientFragmentDirections.actionHomePatientFragmentToExerciseListFragment2(
+            exerciseSet
+        )
+        findNavController().navigate(action)
+    }
+
+    private fun addNewSets(){
+        val action = HomePatientFragmentDirections
+            .actionHomePatientFragmentToAddExerciseSetFragment()
+        findNavController().navigate(action)
+        bindData()
+    }
+
+    private fun bindData(){
+        Log.d(HOME_DEBUG, "binding data")
+        auth = FirebaseAuth.getInstance()
+        homeVm.favSets().observe(viewLifecycleOwner) { list ->
+            Log.d(HOME_DEBUG, "fav sets list: $list")
+            adapter.setExerciseSets(list)
+        }
 
     }
 

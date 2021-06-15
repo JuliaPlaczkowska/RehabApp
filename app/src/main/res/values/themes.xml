@@ -22,4 +22,6 @@
     <style name="Theme.RehabApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.RehabApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>

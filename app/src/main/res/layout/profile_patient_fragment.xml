@@ -4,15 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     tools:context=".profile.patient.ProfilePatientFragment">
-
-<!--    <fragment-->
-<!--        android:id="@+id/exerciseSetNavHost"-->
-<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_above="@+id/bottomNavView"-->
-<!--        android:navGraph="@navigation/exerciseset_nav_graph" />-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,10 +16,11 @@
 
         <ImageView
             android:id="@+id/userImage"
-            android:layout_width="190dp"
-            android:layout_height="190dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginEnd="@dimen/iv_profile_page_margin_end"
-            tools:src="@tools:sample/avatars" />
+            android:src="@drawable/ic_face"
+            android:layout_marginTop="10dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -35,25 +29,14 @@
             android:layout_toEndOf="@+id/userImage"
             android:orientation="vertical">
 
-<!--            <TextView-->
-<!--                android:id="@+id/textViewName"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_toRightOf="@id/userImage"-->
-<!--                android:text="@string/main_page_tv_name"-->
-<!--                android:textColor="@color/light_black"-->
-<!--                android:textSize="@dimen/tv_profile_page_text_size" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/userNameET"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@id/textViewName"-->
-<!--                android:layout_toRightOf="@id/userImage"-->
-<!--                android:hint="@string/main_page_ed_name"-->
-<!--                android:textColor="@color/light_black" />-->
-
-
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/userImage"
+                android:text="@string/main_page_tv_name"
+                android:textColor="@color/light_black"
+                android:textSize="@dimen/tv_profile_page_text_size" />
 
             <EditText
                 android:id="@+id/userSurnameET"
@@ -63,15 +46,6 @@
                 android:hint="@string/main_page_ed_surname"
                 android:textColor="@color/light_black" />
 
-<!--            <Button-->
-<!--                android:layout_gravity="end"-->
-<!--                android:id="@+id/submitDataProfile"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="@dimen/button_sign_in_margin_horizontal"-->
-<!--                android:background="@color/material_medium"-->
-<!--                android:text="Submit"-->
-<!--                android:textColor="@android:color/white" />-->
 
             <TextView
                 android:id="@+id/textViewHeight"
@@ -83,13 +57,14 @@
                 android:textColor="@color/light_black"
                 android:textSize="@dimen/tv_profile_page_text_size" />
 
-            <TextView
+            <EditText
                 android:id="@+id/userHeightET"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewHeight"
                 android:layout_marginTop="1dp"
-                android:hint="170 "
+                android:hint="height"
+                android:inputType="number"
                 android:textColor="@color/light_black"
                 android:textSize="15sp" />
 
@@ -103,41 +78,53 @@
                 android:textColor="@color/light_black"
                 android:textSize="@dimen/tv_profile_page_text_size" />
 
-            <TextView
+            <EditText
                 android:id="@+id/userWeightET"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewWeight"
                 android:layout_marginTop="1dp"
-                android:hint="70"
+                android:hint="weight"
+                android:inputType="number"
                 android:textColor="@color/light_black"
                 android:textSize="15sp" />
 
+            <Button
+                android:layout_gravity="end"
+                android:id="@+id/submitDataProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/button_sign_in_margin_horizontal"
+                android:background="@color/material_medium"
+                android:text="Submit changes"
+                android:textColor="@android:color/white" />
+
         </LinearLayout>
 
-    </RelativeLayout>
-
-      <LinearLayout android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="300dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-
-            android:layout_marginTop="270dp"
-            xmlns:android="http://schemas.android.com/apk/res/android">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="320dp"
+            android:layout_marginEnd="35dp"
+            android:orientation="vertical">
 
             <Button
-                android:id="@+id/buttonStartExercise"
+                android:id="@+id/buttonAddExerciseSet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/button_light"
-                android:text="Start exercise"
+                android:text="browse exercise sets"
                 android:textColor="@color/button_dark" />
 
             <Button
-                android:id="@+id/buttonNotifications"
+                android:id="@+id/buttonCreateExerciseSet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/button_light"
-                android:text="Notifications"
+                android:text="Create exercise set"
                 android:textColor="@color/button_dark" />
 
             <Button
@@ -145,15 +132,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/button_light"
-                android:text="Progress and feedback"
-                android:textColor="@color/button_dark" />
-
-            <Button
-                android:id="@+id/buttonContactPhysio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/button_light"
-                android:text="Contact physiotherapist"
+                android:text="Progress"
                 android:textColor="@color/button_dark" />
 
             <Button
@@ -165,6 +144,7 @@
                 android:textColor="@color/button_dark" />
         </LinearLayout>
 
+    </RelativeLayout>
 
 
 </FrameLayout>

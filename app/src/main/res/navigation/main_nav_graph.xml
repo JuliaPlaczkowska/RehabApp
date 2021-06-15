@@ -9,21 +9,116 @@
         android:id="@+id/homePatientFragment"
         android:name="pwr.ib.rehabapp.home.patient.HomePatientFragment"
         android:label="home_patient_fragment"
-        tools:layout="@layout/home_patient_fragment" >
+        tools:layout="@layout/home_patient_fragment">
         <action
             android:id="@+id/action_homePatientFragment_to_profilePatientFragment"
-            app:destination="@id/profilePatientFragment" />
+            app:destination="@id/profilePatientFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fragment_fade_exit"/>
         <action
             android:id="@+id/action_homePatientFragment_to_exerciseListFragment2"
-            app:destination="@id/exerciseListFragment2" />
+            app:destination="@id/exerciseListFragment2"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fragment_fade_exit">
+        </action>
+        <action
+            android:id="@+id/action_homePatientFragment_to_addExerciseSetFragment"
+            app:destination="@id/addExerciseSetFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/profilePatientFragment"
         android:name="pwr.ib.rehabapp.profile.patient.ProfilePatientFragment"
         android:label="profile_patient_fragment"
-        tools:layout="@layout/profile_patient_fragment" />
+        tools:layout="@layout/profile_patient_fragment" >
+        <action
+            android:id="@+id/action_profilePatientFragment_to_progressFragment"
+            app:destination="@id/progressFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fragment_fade_exit"/>
+        <action
+            android:id="@+id/action_profilePatientFragment_to_addExerciseSetFragment"
+            app:destination="@id/addExerciseSetFragment" />
+        <action
+            android:id="@+id/action_profilePatientFragment_to_createExerciseSetFragment"
+            app:destination="@id/createExerciseSetFragment" />
+    </fragment>
     <fragment
         android:id="@+id/exerciseListFragment2"
         android:name="pwr.ib.rehabapp.home.patient.ExerciseListFragment"
-        android:label="ExerciseListFragment" />
+        android:label="ExerciseListFragment">
+        <argument
+            android:name="set"
+            app:argType="pwr.ib.rehabapp.data.ExerciseSet" />
+        <action
+            android:id="@+id/action_exerciseListFragment2_to_exerciseFragment"
+            app:destination="@id/exerciseFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fragment_fade_exit"/>
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="pwr.ib.rehabapp.home.patient.ExerciseFragment"
+        android:label="ExerciseFragment">
+        <argument
+            android:name="set"
+            app:argType="pwr.ib.rehabapp.data.ExerciseSet" />
+        <action
+            android:id="@+id/action_exerciseFragment_to_setFinishedFragment"
+            app:destination="@id/setFinishedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setFinishedFragment"
+        android:name="pwr.ib.rehabapp.home.patient.SetFinishedFragment"
+        android:label="SetFinishedFragment">
+        <argument
+            android:name="set"
+            app:argType="pwr.ib.rehabapp.data.ExerciseSet" />
+        <argument
+            android:name="workout"
+            app:argType="pwr.ib.rehabapp.data.Workout" />
+        <action
+            android:id="@+id/action_setFinishedFragment_to_homePatientFragment"
+            app:destination="@id/homePatientFragment" />
+        <action
+            android:id="@+id/action_setFinishedFragment_to_progressFragment"
+            app:destination="@id/progressFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/progressFragment"
+        android:name="pwr.ib.rehabapp.profile.patient.ProgressFragment"
+        android:label="ProgressFragment" />
+    <fragment
+        android:id="@+id/addExerciseSetFragment"
+        android:name="pwr.ib.rehabapp.profile.patient.AddExerciseSetFragment"
+        android:label="add_exercise_set_fragment"
+        tools:layout="@layout/add_exercise_set_fragment" >
+        <action
+            android:id="@+id/action_addExerciseSetFragment_to_createExerciseSetFragment"
+            app:destination="@id/createExerciseSetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createExerciseSetFragment"
+        android:name="pwr.ib.rehabapp.profile.patient.CreateExerciseSetFragment"
+        android:label="CreateExerciseSetFragment" >
+        <action
+            android:id="@+id/action_createExerciseSetFragment_to_addExerciseSetFragment"
+            app:destination="@id/addExerciseSetFragment" />
+        <action
+            android:id="@+id/action_createExerciseSetFragment_to_newSetCreated"
+            app:destination="@id/newSetCreated" />
+    </fragment>
+    <fragment
+        android:id="@+id/newSetCreated"
+        android:name="pwr.ib.rehabapp.profile.patient.NewSetCreated"
+        android:label="NewSetCreated" >
+        <action
+            android:id="@+id/action_newSetCreated_to_homePatientFragment"
+            app:destination="@id/homePatientFragment" />
+        <argument
+            android:name="set"
+            app:argType="pwr.ib.rehabapp.data.ExerciseSet" />
+    </fragment>
 </navigation>

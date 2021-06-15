@@ -32,6 +32,10 @@
             android:label="@string/title_activity_main_patient">
         </activity>
         <activity
+            android:name=".activities.MainDoctorActivity"
+            android:label="Doctor Panel">
+        </activity>
+        <activity
             android:name=".activities.RegistrationActivity">
 
         </activity>

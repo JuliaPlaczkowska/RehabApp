@@ -1,4 +1,4 @@
-package pwr.ib.rehabapp.profile.patient
+package pwr.ib.rehabapp.home.doctor
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,16 +9,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.add_exercise_set_fragment.*
 import kotlinx.android.synthetic.main.create_exercise_set_fragment.*
-import kotlinx.android.synthetic.main.home_patient_fragment.*
-import kotlinx.android.synthetic.main.home_patient_fragment.recyclerView_home
 import pwr.ib.rehabapp.R
 import pwr.ib.rehabapp.data.Exercise
 import pwr.ib.rehabapp.data.ExerciseSet
-import pwr.ib.rehabapp.home.patient.*
+import pwr.ib.rehabapp.home.patient.HomePatientViewModel
+import pwr.ib.rehabapp.profile.patient.CreateExerciseSetFragmentDirections
+import pwr.ib.rehabapp.profile.patient.ExercisesToAddAdapter
+import pwr.ib.rehabapp.profile.patient.OnExerciseItemLongClick
 
-class CreateExerciseSetFragment : Fragment(), OnExerciseItemLongClick {
+class CreateExerciseSetDoctorFragment: Fragment(), OnExerciseItemLongClick {
 
     private val adapter = ExercisesToAddAdapter(this)
     private val homeVm: HomePatientViewModel by activityViewModels()
@@ -54,13 +54,12 @@ class CreateExerciseSetFragment : Fragment(), OnExerciseItemLongClick {
             null,
             etName.text.toString(),
             adapter.exerciseSelected,
-        "high")
+            "high")
 
         val newSid = homeVm.addNewSet(newSet);
         newSet.sid = newSid
-        homeVm.addExerciseSet(newSet);
 
-        val action = CreateExerciseSetFragmentDirections.actionCreateExerciseSetFragmentToNewSetCreated(newSet)
+        val action = CreateExerciseSetDoctorFragmentDirections.actionCreateExerciseSetDoctorFragmentToNewSetCreatedDoctorFragment(newSet)
         findNavController().navigate(action)
     }
 

@@ -1,27 +1,29 @@
 package pwr.ib.rehabapp.home.patient
 
-import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import androidx.loader.app.LoaderManager
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.home_patient_fragment.*
+import kotlinx.android.synthetic.main.exercise_list_fragment.*
+import kotlinx.android.synthetic.main.profile_patient_fragment.*
 import pwr.ib.rehabapp.R
 import pwr.ib.rehabapp.data.ExerciseSet
+import pwr.ib.rehabapp.data.Workout
 
-class ExerciseListFragment : Fragment(), OnExerciseSetItemLongClick {
+
+class ExerciseListFragment : Fragment() {
 
     private val auth = FirebaseAuth.getInstance()
     private val homeVm by viewModels<HomePatientViewModel>()
-    private val adapter = ExerciseSetAdapter(this)
+    private val adapter = ExercisesAdapter()
+    private var set = ExerciseSet()
 
 
     override fun onCreateView(
@@ -33,20 +35,27 @@ class ExerciseListFragment : Fragment(), OnExerciseSetItemLongClick {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView_home.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView_home.adapter = adapter
+        recyclerView_exercises.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView_exercises.adapter = adapter
+        set = this.arguments?.get("set") as ExerciseSet
+       buttonStartWorkout.setOnClickListener { startWorkout() }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        Log.d("EXERCISE_LIST_DEBUG", "BITMAP: " + set.sid)
         super.onActivityCreated(savedInstanceState)
-        homeVm.exerciseSet.observe(viewLifecycleOwner) { list ->
-            adapter.setExerciseSets(list)
+        Log.d("EXERCISE_LIST_DEBUG", "lista cwiczen: "+set.exercises.toString())
+        homeVm.getExercises(set).observe(viewLifecycleOwner) { list ->
+            list.let {
+                adapter.setExercises(it)
+            }
         }
     }
 
-    override fun onExerciseSetLongClick(exerciseSet: ExerciseSet, position: Int) {
-        homeVm.addExerciseSet(exerciseSet)
+    private fun startWorkout(){
+       val action = ExerciseListFragmentDirections
+           .actionExerciseListFragment2ToExerciseFragment(set)
+
+        findNavController().navigate(action)
     }
-
-
 }

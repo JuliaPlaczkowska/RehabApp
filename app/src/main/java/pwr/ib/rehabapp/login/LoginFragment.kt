@@ -1,35 +1,16 @@
 package pwr.ib.rehabapp.login
 
-//import android.content.Intent
-//import android.os.Bundle
-//import android.util.Log
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//import androidx.fragment.app.Fragment
-//import androidx.navigation.fragment.findNavController
-//import com.google.android.material.snackbar.Snackbar
-//import com.google.android.material.textfield.TextInputEditText
-//import com.google.firebase.auth.FirebaseAuth
-//import kotlinx.android.synthetic.main.fragment_sign_in.*
-//import pwr.ib.rehabapp.BaseFragment
-//import pwr.ib.rehabapp.R
-//import pwr.ib.rehabapp.activities.MainPatientActivity
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import pwr.ib.rehabapp.BaseFragment
 import pwr.ib.rehabapp.R
-import pwr.ib.rehabapp.activities.MainPatientActivity
 import kotlinx.android.synthetic.main.fragment_sign_in.*
-import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 class LoginFragment : BaseFragment() {
 
@@ -53,7 +34,6 @@ class LoginFragment : BaseFragment() {
     private fun setupRegistrationClick() {
 
         signUpButton.setOnClickListener {
-
             findNavController()
                 .navigate(LoginFragmentDirections.actionLoginFragmentToRegistrationFragment().actionId)
         }
@@ -64,7 +44,7 @@ class LoginFragment : BaseFragment() {
             val email = emailLoginInput?.text?.trim().toString()
             val pass = passLoginInput?.text?.trim().toString()
 
-            if (!email.isNullOrEmpty() || !pass.isNullOrEmpty()) {
+            if (!email.isNullOrEmpty() && !pass.isNullOrEmpty()) {
 
                 fbAuth.signInWithEmailAndPassword(email, pass)
                     .addOnSuccessListener { authRes ->
@@ -79,11 +59,20 @@ class LoginFragment : BaseFragment() {
                             .show()
                         Log.d(LOG_DEBUG, exc.message.toString())
                     }
-
-
+            } else if (email.isNullOrEmpty()) {
+                Snackbar.make(
+                    requireView(),
+                    "Please enter your email address",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            } else if (pass.isNullOrEmpty()) {
+                Snackbar.make(
+                    requireView(),
+                    "Please enter your password",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
         }
-
-
     }
+
 }

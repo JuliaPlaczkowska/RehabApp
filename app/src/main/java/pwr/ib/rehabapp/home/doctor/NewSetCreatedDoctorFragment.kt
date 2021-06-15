@@ -1,4 +1,4 @@
-package pwr.ib.rehabapp.profile.patient
+package pwr.ib.rehabapp.home.doctor
 
 import android.os.Build
 import android.os.Bundle
@@ -9,18 +9,14 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.new_set_created.*
-import kotlinx.android.synthetic.main.set_finished_fragment.*
 import pwr.ib.rehabapp.R
 import pwr.ib.rehabapp.data.ExerciseSet
 import pwr.ib.rehabapp.data.Workout
-import pwr.ib.rehabapp.home.patient.SetFinishedFragmentDirections
-import java.time.LocalDateTime
+import pwr.ib.rehabapp.profile.patient.NewSetCreatedDirections
 
-
-class NewSetCreated : Fragment() {
+class NewSetCreatedDoctorFragment : Fragment() {
 
     private var set = ExerciseSet()
-    private var workout = Workout()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,13 +32,13 @@ class NewSetCreated : Fragment() {
 
         textNewSetName.text = set.name
 
+        buttonStartNewWorkout.text = "OK"
         buttonStartNewWorkout.setOnClickListener{ nextWorkout() }
     }
 
     private fun nextWorkout() {
 
-        val action = NewSetCreatedDirections.actionNewSetCreatedToHomePatientFragment()
-
+        val action = NewSetCreatedDoctorFragmentDirections.actionNewSetCreatedDoctorFragmentToHomeDoctorFragment()
         findNavController().navigate(action)
     }
 
